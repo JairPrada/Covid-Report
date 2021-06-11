@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+   
+    <title>Document</title>
+    <style>
+        *{
+            border: 1px solid black;
+        }
+    </style>
+   
+  </head>
+  <body>
+      <div class="container ">
+        <div class="row justify-content-center ">
+            <p class="h3 text-center col-12"> <strong> ${countryregion} - ${provincestate} </strong> </p>
+            <div class="col-6">
+                <p style="font-size: 50px;">Casos en los tres tipos de estado muertos confirados y recuperados este reporte en su ultima actualizacion se realizo ${lastupdate} :</p>
+            </div>
+            <div class="col-7">
+            <p class="btn btn-danger"><strong>Muertos:</strong>${deaths}</p>
+            <p class=" btn btn-success"><strong>Confirmados:</strong>${confirmed}</p>
+            <p class="btn btn-warning"'><strong>Recuperados:</strong>${recovered}</p>
+           </div>
+        </div>
+      </div>
+    <div id="map" class="map" style="height: 100vh"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_uObeXDFvHT96bNUTNkIFN1I2gucwib0&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+
+    <script>
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+        const info= new google.maps.InfoWindow()
+        info.open(map,marker)
+      }
+    </script>
+  </body>
+</html>

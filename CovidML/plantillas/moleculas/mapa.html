@@ -1,0 +1,369 @@
+{% load static %}
+<div id="map" class="map" style="height: 100vh"></div>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_uObeXDFvHT96bNUTNkIFN1I2gucwib0&callback=initMap&libraries=&v=weekly"
+  defer></script>
+<script>
+  const mapa = document.getElementById("map");
+  async function initMap() {
+    //Creando Mapa
+    const mapaGoogle = new google.maps.Map(mapa, {
+      center: { lat: 0, lng: 0 },
+      zoom: 2.8,
+      styles: [
+        {
+          "featureType": "administrative",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#444444"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative.country",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [
+            {
+              "color": "#f2f2f2"
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#403b4c"
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.attraction",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.business",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.park",
+          "elementType": "labels.text",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.school",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "poi.sports_complex",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [
+            {
+              "saturation": -100
+            },
+            {
+              "lightness": 45
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#b87adb"
+            },
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#c8bae5"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "simplified"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#9591d3"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#eaa7a7"
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "labels",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "simplified"
+            },
+            {
+              "color": "#a2a8fa"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#d8d6e6"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#070505"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "color": "#f3dfdf"
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "color": "#121010"
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station.airport",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station.bus",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "transit.station.rail",
+          "elementType": "all",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [
+            {
+              "color": "#7c9ab0"
+            },
+            {
+              "visibility": "on"
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#33585c"
+            }
+          ]
+        }
+      ]
+    });
+
+    // Obteniendo datos
+    const respuesta = await fetch(
+      "https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest"
+    );
+    const datos = await respuesta.json();
+    //Creando popup
+    const info = new google.maps.InfoWindow();
+    //Agregando Pins al mapa
+    datos.forEach((item) => {
+
+      const marker = new google.maps.Marker({
+        position: { lat: item.location.lat, lng: item.location.lng },
+        map: mapaGoogle,
+        icon:"../../static/medios/imagenes/icon.png"
+
+      });
+
+      //activando evento para no saturar el mapa
+      marker.addListener("click", () => {
+        info.setContent(detalles(item));
+        info.open(mapaGoogle, marker);
+      });
+    });
+  }
+  function detalles({
+    confirmed,
+    deaths,
+    recovered,
+    provincestate,
+    countryregion,
+    lastupdate,
+  }) {
+    return `
+    <div class="container ">
+        <div class="row justify-content-center ">
+            <p class="h3 text-center col-12"> <strong> ${countryregion} - ${provincestate} </strong> </p>
+            <div class="col-10" >
+                <p style="font-size: 20px;">Casos en los tres tipos de estado muertos confirados y recuperados este reporte en su ultima actualizacion se realizo ${lastupdate} :</p>
+            </div>
+            <p class="btn btn-danger"><strong>Muertos:  </strong>${deaths} personas</p>
+            <br>
+            <p class=" btn btn-success"><strong>Confirmados:  </strong>${confirmed} personas</p>
+            <br>
+            <p class="btn btn-warning"'><strong>Recuperados:  </strong>${recovered} personas</p>
+        </div>
+      </div>
+    `;
+  }
+
+</script>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title%} Inicio BehaviorCovid{% endblock%}
+{% block content %}
+{% load static%}
+<!--Banner-->
+<div >
+    <video src="{% static 'medios/videos/BehaviorCovid.mp4'%}" alt="video" loop muted autoplay width="100%">
+</div>
+<!--Tarjetas-->
+<div class="container  mt-5">
+<div class="row justify-content-center" style="margin-bottom: 100px;"> 
+    <div class="col">
+        <div class="card" style="width:100%">
+            <img src="{% static 'medios/imagenes/contagio.svg'%}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Numero de contagios en el Mundo</h5>
+              <p class="card-text">Podras ver en tiempo real las zonas con numeros de contagio en el mundo</p>
+              <a href="/mapa" class="btn btn-dark">Ver Zonas de Contagio</a>
+            </div>
+          </div>
+    </div>
+    <div class="col-1">
+    </div>
+    <div class="col">
+        <div class="card" style="width:100%">
+            <img src="{% static 'medios/imagenes/Bogota.svg'%}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Probabilidades de contagio en Bogota</h5>
+              <p class="card-text">Obtener un procentaje de probabilidad  de contagio si te dirijes a una zona de Bogota </p>
+              <a href="/calcular" class="btn btn-dark">Calcular Probabilidad</a>
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+{% endblock %}
