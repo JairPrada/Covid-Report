@@ -7,5 +7,7 @@ urlpatterns = [
     path('', inicio),
     path('mapa/', probabilidadMapa),
     path('calcular/', calcular),
-    path('nosotros/',nosotros)
+    path('nosotros/',nosotros),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
